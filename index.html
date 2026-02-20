@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard</title>
+  <style>
+    body{font-family:Arial,sans-serif;margin:0;background:#f7f7f7}
+    .container{max-width:520px;margin:20px auto;background:#fff;padding:16px;border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,.08)}
+    h1{margin:0 0 6px;font-size:18px}
+    .sub{color:#666;font-size:13px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+    a.card{display:block;border:1px solid #e5e5e5;border-radius:12px;padding:14px;text-decoration:none;color:#111;background:#fff}
+    .label{font-size:12px;color:#666}
+    .value{font-size:16px;font-weight:700;margin-top:2px}
+    .box{margin-top:14px;border:1px solid #e5e5e5;border-radius:12px;padding:14px}
+    .row{display:flex;gap:8px;margin-top:10px}
+    input{flex:1;padding:10px;border:1px solid #ccc;border-radius:10px;font-size:14px}
+    button{padding:10px 14px;border:0;border-radius:10px;background:#111;color:#fff;font-weight:700}
+    .msg{margin-top:8px;color:#b91c1c;font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Shivshakti Marble & Granite</h1>
+    <div class="sub">Quotation and Challan</div>
+
+    <div class="grid">
+      <a class="card" href="quotation.html">
+        <div class="label">Create</div>
+        <div class="value">Quotation</div>
+      </a>
+      <a class="card" href="challan.html">
+        <div class="label">Create</div>
+        <div class="value">Challan</div>
+      </a>
+    </div>
+
+    <div class="box">
+      <div style="font-weight:700">Quick Search</div>
+      <div class="sub" style="margin-top:4px">Open by Quotation No</div>
+      <div class="row">
+        <input id="qno" placeholder="Q26-Feb-001">
+        <button onclick="openQuotation()">Open</button>
+      </div>
+      <div id="msg" class="msg"></div>
+    </div>
+  </div>
+
+  <script>
+    function openQuotation(){
+      const qno=document.getElementById("qno").value.trim();
+      if(!qno){document.getElementById("msg").textContent="Enter quotation number";return;}
+      location.href="quotation.html?quotationNo="+encodeURIComponent(qno);
+    }
+  </script>
+</body>
+</html>
