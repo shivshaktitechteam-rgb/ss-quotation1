@@ -615,8 +615,10 @@
     }
 
     (async function(){
-      await loadRawData();
-      await initHeader();
+      // Important: don't crash if API fails
+      try { await loadRawData(); } catch (e) { console.error(e); notify("Raw load failed"); }
+      try { await initHeader(); } catch (e) { console.error(e); notify("Header init failed"); }
+
       addRow();
       mAddItem();
       calculateTotal();
